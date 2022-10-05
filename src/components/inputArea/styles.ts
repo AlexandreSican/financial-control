@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+
 export const Container = styled.div`
     background-color: #FFF;
     box-shadow: 0px 0px 5px #CCC;
@@ -61,6 +62,7 @@ export const Button = styled.button`
     background-color: lightblue;
     color: black;
     cursor: pointer;
+    transition: 0.5s;
 
     &:hover {
         background-color: blue;

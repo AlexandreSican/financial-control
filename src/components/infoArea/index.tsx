@@ -6,10 +6,11 @@ type Props = {
   currentyMonth: string,
   onMonthChange: (newMonth: string) => void,
   income: number,
-  expense: number
+  expense: number,
+  colorTheme: boolean
 }
 
-export const InforArea = ({ currentyMonth, onMonthChange, income, expense }: Props) => {
+export const InforArea = ({ currentyMonth, onMonthChange, income, expense, colorTheme }: Props) => {
 
   const handlePrevMonth = () => {
     let [year, month] = currentyMonth.split('-')

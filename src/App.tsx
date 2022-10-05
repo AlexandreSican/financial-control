@@ -1,5 +1,6 @@
 import * as C from './App.styles'
 import { useEffect, useState } from 'react'
+import Switch from "react-switch";
 
 import { filterListByMonth, getCurrentyMonth } from './helpers/dateFilter'
 
@@ -17,7 +18,7 @@ function App() {
   const [currentyMonth, setCurrentyMonth] = useState(getCurrentyMonth())
   const [income, setIncome] = useState(0)
   const [expense, setExpense] = useState(0)
-  
+  const [stateSwitch, setStateSwitch] = useState(false)
 
   useEffect(() => {
     setFilteredList(filterListByMonth(list, currentyMonth))
@@ -39,35 +40,57 @@ function App() {
 
   }, [filteredList])
 
+
+
   const handleMonthChange = (newMonth: string) => {
     setCurrentyMonth(newMonth)
   }
 
-  const handleAddItem = (item:Item) => {
+  const handleAddItem = (item: Item) => {
     let newList = [...list]
     newList.push(item)
     setList(newList)
   }
 
+  const handleChangeTheme = () => setStateSwitch(!stateSwitch)
+
   return (
-    <C.Container>
-      <C.Header>
-        <C.HeaderText>Sistema Financeiro</C.HeaderText>
-      </C.Header>
-      <C.Body>
-        {/* Area de Informações */}
-        <InforArea
-          currentyMonth={currentyMonth}
-          onMonthChange={handleMonthChange}
-          income={income}
-          expense={expense}
-        />
-        {/* Area para inserir informações */}
-        <InputArea onAdd={handleAddItem}/>
-        {/* Tabela de Itens */}
-        <TableArea list={filteredList} />
-      </C.Body>
-    </C.Container>
+    <>
+      <C.Container colorTheme={stateSwitch}>
+
+        <C.Header colorTheme={stateSwitch}>
+          <C.HeaderText colorTheme={stateSwitch}>Sistema Financeiro</C.HeaderText>
+          <C.Box colorTheme={stateSwitch}>
+            <span>Ligh</span>
+            <Switch
+              onChange={handleChangeTheme}
+              checked={stateSwitch}
+              offColor='#000'
+              onColor='#FFF'
+              offHandleColor='#FFF'
+              onHandleColor='#000'
+              uncheckedIcon
+
+            />
+            <span>Dark</span>
+          </C.Box>
+        </C.Header>
+        <C.Body>
+          {/* Area de Informações */}
+          <InforArea
+            currentyMonth={currentyMonth}
+            onMonthChange={handleMonthChange}
+            income={income}
+            expense={expense}
+            colorTheme={stateSwitch}
+          />
+          {/* Area para inserir informações */}
+          <InputArea onAdd={handleAddItem} />
+          {/* Tabela de Itens */}
+          <TableArea list={filteredList} />
+        </C.Body>
+      </C.Container>
+    </>
   )
 }
 
