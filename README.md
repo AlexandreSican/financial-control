@@ -56,3 +56,6 @@ npm run dev
  - <a href="https://www.linkedin.com/in/alex-sicchieri/" target="_blank">LinkedIn</a>
  - E-mail: alexsicchieri@gmail.com
  - Telefone/WhatsApp: (16) 9 9265-6120
+ 
+# Demonstrativo
+<img src="https://github.com/AlexandreSican/images/blob/main/gif-control.gif?raw=true" width="100%"/>
